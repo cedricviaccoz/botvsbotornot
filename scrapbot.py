@@ -14,13 +14,12 @@ def main(file):
 	browser.get(SCRAP_URL)
 	startLine = browser.find_element_by_link_text("Free play")
 	startLine.click()
-	itsAbot = browser.find_element_by_link_text("Bot")
-	itsABot.clic()
+	itsABot = browser.find_elements_by_name("submit")
+	itsABot[0].click()
 	currUrl = browser.current_url
-
-	duplicateThreshold = 100
-	duplcates = 0
-	page = BeautifulSoup(urllib2.urlopen(SCRAP_URL))
+	
+	soup = BeautifulSoup(browser.page_source, 'html.parser')
+	print(soup.title)
 
 
 
